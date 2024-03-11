@@ -17,7 +17,7 @@ public class Main {
         System.out.println("Type 4 to update attendee");
         System.out.println("Type 5 to find a single attendee");
         System.out.println("Type 6 to display all the attendees from the event ");
-        System.out.println("Enter the choice what you want to do(1-6):");
+        System.out.println("enter the choice what you want to do(1-6):");
         
         choice=reader.nextInt();
         event.organizeEvent(choice);

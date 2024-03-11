@@ -159,7 +159,7 @@ public class event {
                         
                     }
 
-                    System.out.println("Enter the new age,or enter 0 if you don'twant to update :");
+                    System.out.println("Enter the new age or enter 0 if you don'twant to update :");
                     int newAge=reader.nextInt();
                     reader.nextInt();
                     if(newAge!=0){
