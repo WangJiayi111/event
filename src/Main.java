@@ -10,7 +10,7 @@ public class Main {
     int choice=0;
     do{
 
-        System.out.println("\n" + "Here's what you can do in the program" + "\n");
+        System.out.println("\n" + "Here is what you can do in the program" + "\n");
         System.out.println("Type 1 to enter event details:");
         System.out.println("Type 2 to enter attendee names that are coming to the event:\"");
         System.out.println("Type 3 to remove attendee");
