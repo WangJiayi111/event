@@ -1,20 +1,36 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class event {
+
+        Scanner reader=new Scanner(System.in);
+        
+        
+        HashMap<String, Attendee> seatDetails = new HashMap<>(200,0.6f);
+
+
         private String eventID;
         private String eventName;
         private String eventVenue;
         private LocalDate eventDate;
         ArrayList<Attendee> eventAttendees=new ArrayList<>();
 
-        public event(String eventID,String eventName,String eventVenun,LocalDate eventDate,ArrayList<Attendee>eventAttendees){
+        
+        
+       
+
+    
+        public event(String eventID,String eventName,String eventVenun,LocalDate eventDate,ArrayList<Attendee>eventAttendees,HashMap<String, Attendee> seatDetails){
             this.eventID=eventID;
             this.eventName=eventName;
             this.eventVenue=eventVenun;
             this.eventDate=eventDate;
             this.eventAttendees =eventAttendees;
+            this.seatDetails=seatDetails;
+            
+            
         }
     
 
@@ -62,22 +78,31 @@ public class event {
         }
 
 
+       
+
+        public void setSeatDetails(String seat, Attendee attendee){
+            seatDetails.put(seat, attendee);
+        }
+    
+        public void getSeatDetails(String seat){
+            System.out.println("The details for the seat " + seat + " are as follows: " + "\n" + seatDetails.get(seat));
+        }
+
+   
+
+
+
+
+
+    
 
 
     @Override
         public String toString() {
-        return "Event [eventID=" + eventID + ", eventName=" + eventName + ", eventVenue=" + eventVenue + ", eventDate="
-        + eventDate + ", eventAttendees=" + eventAttendees + "]";
-     
-    
-
-    }
-
-
-
-        
-    
-
+            return "event [ seatDetails=" + seatDetails + ", eventID=" + eventID + ", eventName="
+                    + eventName + ", eventVenue=" + eventVenue + ", eventDate=" + eventDate + ", eventAttendees="
+                    + eventAttendees + "]";
+        }
 
 
     public  void organizeEvent(int choice) {
@@ -124,8 +149,11 @@ public class event {
                 System.out.println("Enter the email of the attendee:");
                 String email=reader.nextLine();
 
-                eventAttendees.add(new Attendee(name, gender, email, age));
+                System.out.println("Enter the seat number for the attendee");
+                String seat=reader.nextLine();
 
+                eventAttendees.add(new Attendee(name, gender, email, age,seat));
+                setSeatDetails(seat,(new Attendee(name, gender, email, age, seat)));
             }
 
             System.out.println("\n added successfully to the list of attendee");
@@ -211,11 +239,32 @@ public class event {
 
     
             case 7:
+            HandleComplementaryPasses compPass=new HandleComplementaryPasses();
+            compPass.handleComplementaryPasses();
             break;
         
+
+            case 8:
+            HandleComplementaryPasses performance=new HandleComplementaryPasses();
+            performance.handleComplementaryPasses();
+            break;
+            
+
+
+            case 9:
+            System.out.println("Enter the seat number to find its details:");
+            String seat=reader.nextLine();
+            getSeatDetails(seat);
+            break;
+
+
+
+            case 10:
+            break;
+
             default:
             System.out.println("invalid choice");
-            break;
+        
            
         }
 
@@ -228,6 +277,7 @@ public class event {
         reader.close();
     
     }
-    }
 
+}
+    
         

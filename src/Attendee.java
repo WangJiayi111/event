@@ -3,13 +3,15 @@ public class Attendee {
     private char gender;
     private String email;
     private int age;
+    private String seatNo;
     
     
-    public Attendee(String name, char gender, String email, int age) {
+    public Attendee(String name, char gender, String email, int age,String seatNo) {
         this.name = name;
         this.gender = gender;
         this.email = email;
         this.age = age;
+        this.seatNo=seatNo;
     }
 
 
@@ -52,8 +54,26 @@ public class Attendee {
         this.age = age;
     }
 
+
+    public String getSeatNo() {
+        return seatNo;
+    }
+
+
+    public void setSeatNo(String seatNo) {
+        this.seatNo = seatNo;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Attendee [name=" + name + ", gender=" + gender + ", email=" + email + ", age=" + age + ", seatNo="
+                + seatNo + "]";
+    }
+
     
 
+    
     
     
     
